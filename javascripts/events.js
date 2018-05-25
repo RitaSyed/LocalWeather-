@@ -1,10 +1,13 @@
+const searchWeather = require('./searchWeather');
 const pressEnter = () => {
   $('#submitBtn').click(() => {
-    console.error('clicked');
+    const searchWords = $('#searchBar').val();
+    searchWeather.showResults(searchWords);
   });
   $(document).keypress((e) => {
     if (e.key === 'Enter') {
-      console.error('enter');
+      const searchWords = $('#searchBar').val().replace(' ', '%20');
+      searchWeather.showResults(searchWords);
     }
   });
 };
