@@ -1,1 +1,3 @@
-console.error('hi');
+const events = require('./events');
+
+events.initializer();
