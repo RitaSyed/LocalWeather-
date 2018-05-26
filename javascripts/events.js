@@ -1,14 +1,22 @@
 const searchWeather = require('./searchWeather');
+let zipcode = '';
+
+const setZipCode = (zip) => {
+  zipcode = zip;
+};
+
 const pressEnter = () => {
   $('#submitBtn').click(() => {
     const searchZipcode = $('#searchBar').val();
-    searchWeather.showResults(searchZipcode);
+    setZipCode(searchZipcode);
+    searchWeather.showResults(searchZipcode, 'weather');
     validateZipcode(searchZipcode);
   });
   $(document).keypress((e) => {
     if (e.key === 'Enter') {
       const searchZipcode = $('#searchBar').val().replace(' ', '%20');
-      searchWeather.showResults(searchZipcode);
+      setZipCode(searchZipcode);
+      searchWeather.showResults(searchZipcode, 'weather');
       validateZipcode(searchZipcode);
     }
   });
@@ -25,6 +33,9 @@ const validateZipcode = (input) => {
 
 const initializer = () => {
   pressEnter();
+  $(document).on('click', '#fiveDayBtn', () => {
+    searchWeather.showResults(zipcode, 'forecast');
+  });
 };
 
 module.exports = {

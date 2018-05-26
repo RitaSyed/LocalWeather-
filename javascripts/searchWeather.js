@@ -3,12 +3,11 @@ let weatherKey = '';
 
 const setKey = (key) => {
   weatherKey = key;
-  console.error(weatherKey);
 };
 
-const weather = (zipcode) => {
+const weather = (zipcode, forecast) => {
   return new Promise((resolve, reject) => {
-    $.ajax(`http://api.openweathermap.org/data/2.5/weather?zip=${zipcode},us&appid=${weatherKey}&units=imperial`)
+    $.ajax(`http://api.openweathermap.org/data/2.5/${forecast}?zip=${zipcode},us&appid=${weatherKey}&units=imperial`)
       .done((result) => {
         resolve(result);
       })
@@ -18,10 +17,14 @@ const weather = (zipcode) => {
   });
 };
 
-const showResults = (searchText) => {
-  weather(searchText)
+const showResults = (searchText, forecast) => {
+  weather(searchText, forecast)
     .then((result) => {
-      dom.domString(result);
+      if (forecast === 'weather') {
+        dom.domString(result);
+      } else if (forecast === 'forecast') {
+        dom.strang5dayForecast(result);
+      }
     })
     .catch((err) => {
       console.error('search error', err);
