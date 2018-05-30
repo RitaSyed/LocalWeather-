@@ -27,7 +27,7 @@ const strang5dayForecast = (forecast) => {
       strang +=     `<p><strong>Current Conditions: </strong>${oneDay.weather[0].description}</p>`;
       strang +=     `<p><strong>Barometric Pressure: </strong>${oneDay.main.pressure} hPa</p>`;
       strang +=     `<p><strong>Wind Speed: </strong>${oneDay.wind.speed} mph</p>`;
-      strang +=     `<p><a href="#" id="WeatherNowBtn" class="btn btn-default" role="button">Weather Now</a> <a href="#" id="fiveDayBtn" class="btn btn-default" role="button">5-Day</a></p>`;
+      strang +=     `<p><a href="#" id="WeatherNowBtn" class="btn btn-default" role="button">Weather Now</a>`;
       strang +=   `</div>`;
       strang +=  `</div>`;
       strang += `</div>`;
