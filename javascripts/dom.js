@@ -1,7 +1,7 @@
 // const events = require('./events');
 const domString = (weatherArray) => {
   let strang = '';
-  strang += `<div class="col-sm-6 col-md-4">`;
+  strang += `<div class="col-sm-4 col-sm-offset-4 card">`;
   strang +=  `<div class="thumbnail">`;
   strang +=   `<div class="caption">`;
   strang +=     `<h3>${weatherArray.name}</h3>`;
@@ -19,7 +19,7 @@ const strang5dayForecast = (forecast) => {
   let strang = '';
   forecast.list.forEach((oneDay, index) => {
     if (index % 8 === 0) {
-      strang += `<div class="col-sm-6 col-md-4">`;
+      strang += `<div class="col-sm-6 col-md-4 card">`;
       strang +=  `<div class="thumbnail">`;
       strang +=   `<div class="caption">`;
       strang +=     `<h3>${forecast.city.name}</h3>`;
@@ -31,9 +31,7 @@ const strang5dayForecast = (forecast) => {
       strang +=   `</div>`;
       strang +=  `</div>`;
       strang += `</div>`;
-    // printToDom(strang);
     };
-    // printToDom(strang);
   });
   printToDom(strang);
 };
@@ -41,6 +39,9 @@ const strang5dayForecast = (forecast) => {
 const printToDom = (stringz) => {
   $('#weatherOutput').html(stringz);
 };
+// const replaceDom = (stringz) => {
+//   $('#weatherOutput').html(stringz);
+// };
 
 module.exports = {
   domString,
