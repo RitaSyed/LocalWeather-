@@ -21,10 +21,13 @@ const showResults = (searchText, forecast) => {
   weather(searchText, forecast)
     .then((result) => {
       if (forecast === 'weather') {
+      // console.error('weather');
         dom.domString(result);
-      } else if (forecast === 'forecast') {
-        dom.strang5dayForecast(result);
       }
+      if (forecast === 'forecast') {
+        dom.strang5dayForecast(result);
+        // console.error('forecast');
+      };
     })
     .catch((err) => {
       console.error('search error', err);

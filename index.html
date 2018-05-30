@@ -10,15 +10,25 @@
 </head>
 <body>
 
-
-
-<form class="form-inline">
-  <div class="form-group">
-    <input type="text" class="form-control" id="searchBar" placeholder="enter zipcode...">
+<div class="container">
+  <!-- <div class="col-md-offset-3">
+    <div class="form-inline">
+      <div class="form-group">
+        <input type="text" class="form-control" id="searchBar" placeholder="enter zipcode...">
+      </div>
+      <button type="submit" id="submitBtn" class="btn btn-default">Submit</button>
+    </div>
   </div>
-  <button type="submit" id="submitBtn" class="btn btn-default">Submit</button>
-</form>
-<div id='weatherOutput'></div>
+  <div id='weatherOutput'></div>
+</div> -->
+
+  <div class="input-group col-sm-4 col-sm-offset-4">
+    <input id="searchBar" type="text" class="form-control" placeholder="enter zipcode..." aria-describedby="basic-addon1">
+    <span class="input-group-btn"><button type="submit" id="submitBtn" class="btn btn-default">Submit</button></span>
+  </div>
+  <div id='weatherOutput'></div>
+</div>
+
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
