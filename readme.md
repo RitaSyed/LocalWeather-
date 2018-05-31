@@ -8,6 +8,8 @@
 ![WebPage](https://raw.githubusercontent.com/RitaSyed/LocalWeather-/master/screenshots/PageViewOnLoad.png)
 #### Page view when zipcode is entered
 ![WebPage](https://raw.githubusercontent.com/RitaSyed/LocalWeather-/master/screenshots/PageViewWhenZipcodeIsSbmt.png)
+#### Page view when 5-day button is clicked
+![WebPage](https://raw.githubusercontent.com/RitaSyed/LocalWeather-/master/screenshots/PageViewWhen5daysForecastBtnIsClicked.png)
 
 ## Technologies Used:
 1. HTML5, CSS, JavaScript, jQuery
