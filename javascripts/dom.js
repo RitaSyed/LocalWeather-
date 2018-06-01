@@ -36,6 +36,25 @@ const strang5dayForecast = (forecast) => {
   printToDom(strang);
 };
 
+const savesForecasts = (forecast) => {
+  let strang = '';
+  forecast.forEach((oneDay) => {
+    strang += `<div class="col-sm-6 col-md-4 card">`;
+    strang +=  `<div class="thumbnail">`;
+    strang +=   `<div class="caption">`;
+    strang +=     `<h3>${oneDay.city}</h3>`;
+    strang +=     `<h4>${oneDay.temperature}&#8457;</h4>`;
+    strang +=     `<p><strong>Current Conditions: </strong>${oneDay.description}</p>`;
+    strang +=     `<p><strong>Barometric Pressure: </strong>${oneDay.pressure} hPa</p>`;
+    strang +=     `<p><strong>Wind Speed: </strong>${oneDay.windSpeed} mph</p>`;
+    // strang +=     `<p><a href="#" id="WeatherNowBtn" class="btn btn-default" role="button">Current Forecast</a>`;
+    strang +=   `</div>`;
+    strang +=  `</div>`;
+    strang += `</div>`;
+  });
+  printToDom(strang);
+};
+
 const printToDom = (stringz) => {
   $('#weatherOutput').html(stringz);
 };
@@ -46,4 +65,5 @@ const printToDom = (stringz) => {
 module.exports = {
   domString,
   strang5dayForecast,
+  savesForecasts,
 };

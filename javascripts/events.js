@@ -1,5 +1,6 @@
 const searchWeather = require('./searchWeather');
 const firebaseApi = require('./firebaseApi');
+const dom = require('./dom');
 let zipcode = '';
 
 const setZipCode = (zip) => {
@@ -52,12 +53,24 @@ const saveCurrentForecastEvent = () => {
   });
 };
 
+const getAllForecastsEvent = () => {
+  firebaseApi.getAllSavedForecasts()
+    .then((forecastsArray) => {
+      dom.savesForecasts(forecastsArray);
+    })
+    .catch((error) => {
+      console.error('error in get all forecasts event', error);
+    });
+};
+
 const initializer = () => {
   pressEnter();
   $(document).on('click', '#fiveDayBtn', () => {
     searchWeather.showResults(zipcode, 'forecast');
   });
   saveCurrentForecastEvent();
+  $(document).on('click', '#ViewSavedForecasts', getAllForecastsEvent);
+
 };
 
 module.exports = {
