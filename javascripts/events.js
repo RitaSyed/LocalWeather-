@@ -1,4 +1,6 @@
 const searchWeather = require('./searchWeather');
+const firebaseApi = require('./firebaseApi');
+const dom = require('./dom');
 let zipcode = '';
 
 const setZipCode = (zip) => {
@@ -31,11 +33,44 @@ const validateZipcode = (input) => {
   }
 };
 
+const saveCurrentForecastEvent = () => {
+  $(document).on('click', '.saveForecast', (e) => {
+    const forecastToAddCard = $(e.target).closest('.forecastCard');
+    const forecastToAdd = {
+      city: forecastToAddCard.find('.forecast-city-name').text(),
+      temperature: forecastToAddCard.find('.forecast-temp').text(),
+      description: forecastToAddCard.find('.forecast-description').text(),
+      pressure: forecastToAddCard.find('.forecast-pressure').text(),
+      windSpeed: forecastToAddCard.find('.forecast-wind-speed').text(),
+    };
+    firebaseApi.saveCurrentForecast(forecastToAdd)
+      .then(() => {
+
+      })
+      .catch((error) => {
+        console.error('error in saving movie', error);
+      });
+  });
+};
+
+const getAllForecastsEvent = () => {
+  firebaseApi.getAllSavedForecasts()
+    .then((forecastsArray) => {
+      dom.savesForecasts(forecastsArray);
+    })
+    .catch((error) => {
+      console.error('error in get all forecasts event', error);
+    });
+};
+
 const initializer = () => {
   pressEnter();
   $(document).on('click', '#fiveDayBtn', () => {
     searchWeather.showResults(zipcode, 'forecast');
   });
+  saveCurrentForecastEvent();
+  $(document).on('click', '#ViewSavedForecasts', getAllForecastsEvent);
+
 };
 
 module.exports = {
