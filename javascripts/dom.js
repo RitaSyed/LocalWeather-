@@ -2,14 +2,14 @@
 const domString = (weatherArray) => {
   let strang = '';
   strang += `<div class="col-sm-4 col-sm-offset-4 card">`;
-  strang +=  `<div class="thumbnail">`;
+  strang +=  `<div class="thumbnail forecastCard">`;
   strang +=   `<div class="caption">`;
-  strang +=     `<h3>${weatherArray.name}</h3>`;
-  strang +=     `<h4>${weatherArray.main.temp}&#8457;</h4>`;
-  strang +=     `<p><strong>Current Conditions: </strong>${weatherArray.weather[0].description}</p>`;
-  strang +=     `<p><strong>Barometric Pressure: </strong>${weatherArray.main.pressure} hPa</p>`;
-  strang +=     `<p><strong>Wind Speed: </strong>${weatherArray.wind.speed} mph</p>`;
-  strang +=     `<p></a> <a href="#" id="fiveDayBtn" class="btn btn-default" role="button">5-Day</a></p>`;
+  strang +=     `<h3 class="forecast-city-name">${weatherArray.name}</h3>`;
+  strang +=     `<h4 class="forecast-temp">${weatherArray.main.temp}&#8457;</h4>`;
+  strang +=     `<p class="forecast-description"><strong>Current Conditions: </strong>${weatherArray.weather[0].description}</p>`;
+  strang +=     `<p class="forecast-pressure"><strong>Barometric Pressure: </strong>${weatherArray.main.pressure} hPa</p>`;
+  strang +=     `<p class="forecast-wind-speed"><strong>Wind Speed: </strong>${weatherArray.wind.speed} mph</p>`;
+  strang +=     `<p><a href="#" id="fiveDayBtn" class="btn btn-default" role="button">5-Day</a><a href="#" class="btn btn-default saveForecast" role="button">Save Forecast</a></p>`;
   strang +=   `</div>`;
   strang +=  `</div>`;
   strang += `</div>`;
