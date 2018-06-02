@@ -63,6 +63,20 @@ const getAllForecastsEvent = () => {
     });
 };
 
+const deleteForecastFromFirebase = () => {
+  $(document).on('click', '.deleteBtn', (e) => {
+    console.error('btn clicked');
+    const forecastToDeleteId = $(e.target).closest('.forecastCard').data('firebaseId');
+    firebaseApi.deleteForecastFromDb(forecastToDeleteId)
+      .then(() => {
+        getAllForecastsEvent();
+      })
+      .catch((error) => {
+        console.error('error from delete movie', error);
+      });
+  });
+};
+
 const initializer = () => {
   pressEnter();
   $(document).on('click', '#fiveDayBtn', () => {
@@ -70,7 +84,7 @@ const initializer = () => {
   });
   saveCurrentForecastEvent();
   $(document).on('click', '#ViewSavedForecasts', getAllForecastsEvent);
-
+  deleteForecastFromFirebase();
 };
 
 module.exports = {

@@ -39,14 +39,16 @@ const strang5dayForecast = (forecast) => {
 const savesForecasts = (forecast) => {
   let strang = '';
   forecast.forEach((oneDay) => {
-    strang += `<div class="col-sm-6 col-md-4 card">`;
-    strang +=  `<div class="thumbnail">`;
+    strang += `<div class="col-sm-6 col-md-4">`;
+    strang +=  `<div class="thumbnail forecastCard" data-firebase-id="${oneDay.id}">`;
     strang +=   `<div class="caption">`;
+    strang +=     `<a class="btn btn-danger deleteBtn">X</a>`;
     strang +=     `<h3>${oneDay.city}</h3>`;
     strang +=     `<h4>${oneDay.temperature}&#8457;</h4>`;
     strang +=     `<p>${oneDay.description}</p>`;
     strang +=     `<p>${oneDay.pressure} hPa</p>`;
     strang +=     `<p>${oneDay.windSpeed} mph</p>`;
+
     // strang +=     `<p><a href="#" id="WeatherNowBtn" class="btn btn-default" role="button">Current Forecast</a>`;
     strang +=   `</div>`;
     strang +=  `</div>`;
