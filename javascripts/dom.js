@@ -44,9 +44,9 @@ const savesForecasts = (forecast) => {
     strang +=   `<div class="caption">`;
     strang +=     `<h3>${oneDay.city}</h3>`;
     strang +=     `<h4>${oneDay.temperature}&#8457;</h4>`;
-    strang +=     `<p><strong>Current Conditions: </strong>${oneDay.description}</p>`;
-    strang +=     `<p><strong>Barometric Pressure: </strong>${oneDay.pressure} hPa</p>`;
-    strang +=     `<p><strong>Wind Speed: </strong>${oneDay.windSpeed} mph</p>`;
+    strang +=     `<p>${oneDay.description}</p>`;
+    strang +=     `<p>${oneDay.pressure} hPa</p>`;
+    strang +=     `<p>${oneDay.windSpeed} mph</p>`;
     // strang +=     `<p><a href="#" id="WeatherNowBtn" class="btn btn-default" role="button">Current Forecast</a>`;
     strang +=   `</div>`;
     strang +=  `</div>`;
@@ -58,9 +58,6 @@ const savesForecasts = (forecast) => {
 const printToDom = (stringz) => {
   $('#weatherOutput').html(stringz);
 };
-// const replaceDom = (stringz) => {
-//   $('#weatherOutput').html(stringz);
-// };
 
 module.exports = {
   domString,
