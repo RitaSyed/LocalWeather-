@@ -42,6 +42,7 @@ const saveCurrentForecastEvent = () => {
       description: forecastToAddCard.find('.forecast-description').text(),
       pressure: forecastToAddCard.find('.forecast-pressure').text(),
       windSpeed: forecastToAddCard.find('.forecast-wind-speed').text(),
+      isScary: false,
     };
     firebaseApi.saveCurrentForecast(forecastToAdd)
       .then(() => {
@@ -77,6 +78,28 @@ const deleteForecastFromFirebase = () => {
   });
 };
 
+const updateForecastEvent = () => {
+  $(document).on('click', '.saveScaryForecast', (e) => {
+    const forecastToUpdateId = $(e.target).closest('.forecastCard').data('firebaseId');
+    const forecastToUpdateCard = $(e.target).closest('.card');
+    const updatedForecast = {
+      city: forecastToUpdateCard.find('.forecast-city-name').text(),
+      temperature: forecastToUpdateCard.find('.forecast-temp').text(),
+      description: forecastToUpdateCard.find('.forecast-description').text(),
+      pressure: forecastToUpdateCard.find('.forecast-pressure').text(),
+      windSpeed: forecastToUpdateCard.find('.forecast-wind-speed').text(),
+      isScary: true,
+    };
+    firebaseApi.updateForecastToBeScaryInDb(updatedForecast, forecastToUpdateId)
+      .then(() => {
+        getAllForecastsEvent();
+      })
+      .catch((error) => {
+        console.error('error in update forecast', error);
+      });
+  });
+};
+
 const initializer = () => {
   pressEnter();
   $(document).on('click', '#fiveDayBtn', () => {
@@ -85,6 +108,7 @@ const initializer = () => {
   saveCurrentForecastEvent();
   $(document).on('click', '#ViewSavedForecasts', getAllForecastsEvent);
   deleteForecastFromFirebase();
+  updateForecastEvent();
 };
 
 module.exports = {
