@@ -57,9 +57,26 @@ const deleteForecastFromDb = (forecastId) => {
   });
 };
 
+const updateForecastToBeScaryInDb = (updatedForecast, forecastId) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: 'PUT',
+      url: `${firebaseConfig.databaseURL}/forecasts/${forecastId}.json`,
+      data: JSON.stringify(updatedForecast),
+    })
+      .done((modifiedForecast) => {
+        resolve(modifiedForecast);
+      })
+      .fail((error) => {
+        reject(error);
+      });
+  });
+};
+
 module.exports = {
   setConfig,
   saveCurrentForecast,
   getAllSavedForecasts,
   deleteForecastFromDb,
+  updateForecastToBeScaryInDb,
 };

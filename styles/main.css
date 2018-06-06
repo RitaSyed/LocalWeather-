@@ -13,3 +13,7 @@ body {
 .card {
   margin-top: 20px;
 }
+
+.red {
+  background-color: rgb(243, 115, 115);
+}
