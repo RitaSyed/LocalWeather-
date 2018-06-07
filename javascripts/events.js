@@ -106,12 +106,6 @@ const authEvents = () => {
     const email = $('#inputEmail').val();
     const pass = $('#inputPassword').val();
     firebase.auth().signInWithEmailAndPassword(email, pass)
-      .then((user) => {
-        $('#searchForm').removeClass('hide');
-        $('#authScreen').addClass('hide');
-        // call the getMoviesEvent
-        getAllForecastsEvent();
-      })
       .catch((error) => {
         const errorMessage = error.message;
         console.error(errorMessage);
@@ -124,6 +118,13 @@ const authEvents = () => {
   $('#signin-link').click(() => {
     $('#login-form').removeClass('hide');
     $('#registration-form').addClass('hide');
+  });
+  $('#logout').click(() => {
+    firebase.auth().signOut().then(() => {
+    }).catch((error) => {
+      // An error happened.
+      console.error(error);
+    });
   });
 };
 
@@ -141,4 +142,5 @@ const initializer = () => {
 
 module.exports = {
   initializer,
+  getAllForecastsEvent,
 };
