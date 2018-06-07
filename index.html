@@ -10,26 +10,114 @@
   <title>Document</title>
 </head>
 <body>
-
-<div class="container">
-  <!-- <div class="col-md-offset-3">
-    <div class="form-inline">
-      <div class="form-group">
-        <input type="text" class="form-control" id="searchBar" placeholder="enter zipcode...">
+  <nav class="navbar-default navbar-fixed-top nav-margin" role="search">
+    <div class="container-fluid">
+      <div class="navbar-header navbar-btn">
+        <a class="navbar-brand" href="#">
+          Weather
+        </a>
       </div>
-      <button type="submit" id="submitBtn" class="btn btn-default">Submit</button>
-    </div>
-  </div>
-  <div id='weatherOutput'></div>
-</div> -->
+      <div id="searchForm" class="nav navbar-nav navbar-form navbar-left hide">
+        <div class="form-group">
+          <input id="searchBar" type="text" class="form-control" placeholder="enter zipcode..." aria-describedby="basic-addon1">
+        </div>
+        <div class="btn-group navbar-btn" role="group" aria-label="...">
+          <button type="button" id="submitBtn"class="btn btn-default">Submit</button>
+          <button type="button" id="ViewSavedForecasts" class="btn btn-default">View Saved Forecasts</button>
+        </div>
 
-  <div class="input-group col-sm-6 col-sm-offset-3">
-    <input id="searchBar" type="text" class="form-control" placeholder="enter zipcode..." aria-describedby="basic-addon1">
-    <span class="input-group-btn"><button type="submit" id="submitBtn" class="btn btn-default">Submit</button></span>
-    <span class="input-group-btn"><button type="submit" id="ViewSavedForecasts" class="btn btn-default">View Saved Forecasts</button></span>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Log Out</a></li>
+      </ul>
+    </div>
+
+  </nav>
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+        <!-- <div id="searchForm" class="input-group col-sm-6 col-sm-offset-3 hide">
+          <input id="searchBar" type="text" class="form-control" placeholder="enter zipcode..." aria-describedby="basic-addon1">
+          <span class="input-group-btn"><button type="submit" id="submitBtn" class="btn btn-default">Submit</button></span>
+          <span class="input-group-btn"><button type="submit" id="ViewSavedForecasts" class="btn btn-default">View Saved Forecasts</button></span>
+        </div> -->
+
+
+
+
+
+
+  <div class="container">
+    <div id="authScreen">
+      <div id="login-form">
+        <h1 class="text-center">Sign In</h1>
+        <form class="form-horizontal col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+          <div id="signin-error" class="alert alert-danger hide" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span id="signin-error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">Password  </label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="#" id="register-link">Need to Register?</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default" id="signin-btn">Sign in</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="registration-form" class="hide">
+        <h1 class="text-center">Registration</h1>
+        <form class="form-horizontal col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+          <div id="register-error" class="alert alert-danger hide" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span id="register-error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="registerEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="#" id="signin-link">Go to Login</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default" id="register-btn">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id='weatherOutput'></div>
+
   </div>
-  <div id='weatherOutput'></div>
-</div>
 
   <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

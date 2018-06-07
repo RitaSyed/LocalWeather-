@@ -100,6 +100,33 @@ const updateForecastEvent = () => {
   });
 };
 
+const authEvents = () => {
+  $('#signin-btn').click((e) => {
+    e.preventDefault();
+    const email = $('#inputEmail').val();
+    const pass = $('#inputPassword').val();
+    firebase.auth().signInWithEmailAndPassword(email, pass)
+      .then((user) => {
+        $('#searchForm').removeClass('hide');
+        $('#authScreen').addClass('hide');
+        // call the getMoviesEvent
+        getAllForecastsEvent();
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.error(errorMessage);
+      });
+  });
+  $('#register-link').click(() => {
+    $('#login-form').addClass('hide');
+    $('#registration-form').removeClass('hide');
+  });
+  $('#signin-link').click(() => {
+    $('#login-form').removeClass('hide');
+    $('#registration-form').addClass('hide');
+  });
+};
+
 const initializer = () => {
   pressEnter();
   $(document).on('click', '#fiveDayBtn', () => {
@@ -109,6 +136,7 @@ const initializer = () => {
   $(document).on('click', '#ViewSavedForecasts', getAllForecastsEvent);
   deleteForecastFromFirebase();
   updateForecastEvent();
+  authEvents();
 };
 
 module.exports = {
