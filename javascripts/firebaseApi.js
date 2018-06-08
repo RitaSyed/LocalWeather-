@@ -1,10 +1,14 @@
 let firebaseConfig = {};
+let uid = '';
 
 const setConfig = (fbConfig) => {
   firebaseConfig = fbConfig;
 };
-
+const setUID = (newUID) => {
+  uid = newUID;
+};
 const saveCurrentForecast = (newForecast) => {
+  newForecast.uid = uid;
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'POST',
@@ -25,7 +29,7 @@ const getAllSavedForecasts = () => {
     const allForecastsArray = [];
     $.ajax({
       method: 'GET',
-      url: `${firebaseConfig.databaseURL}/forecasts.json`,
+      url: `${firebaseConfig.databaseURL}/forecasts.json?orderBy="uid"&equalTo="${uid}"`,
     })
       .done((allForecastsObj) => {
         if (allForecastsObj !== null) {
@@ -58,6 +62,7 @@ const deleteForecastFromDb = (forecastId) => {
 };
 
 const updateForecastToBeScaryInDb = (updatedForecast, forecastId) => {
+  updatedForecast.uid = uid;
   return new Promise((resolve, reject) => {
     $.ajax({
       method: 'PUT',
@@ -75,6 +80,7 @@ const updateForecastToBeScaryInDb = (updatedForecast, forecastId) => {
 
 module.exports = {
   setConfig,
+  setUID,
   saveCurrentForecast,
   getAllSavedForecasts,
   deleteForecastFromDb,
