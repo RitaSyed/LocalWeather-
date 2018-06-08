@@ -1,6 +1,6 @@
 const searchWeather  = require('./searchWeather');
 const firebaseApi = require('./firebaseApi');
-
+const auth = require('./auth');
 const apiKeys = () => {
   return new Promise((resolve, reject) => {
     $.ajax('./db/apiKeys.json')
@@ -19,6 +19,7 @@ const retrieveKeys = () => {
       searchWeather.setKey(results.weather.apiKey);
       firebaseApi.setConfig(results.firebase);
       firebase.initializeApp(results.firebase);
+      auth.checkLoginStatus();
     })
     .catch((err) => {
       console.error('no keys:', err);
