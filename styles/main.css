@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-  margin-top: 30px;
+  margin-top: 70px;
   margin-bottom: 10%;
 }
 
@@ -16,4 +16,18 @@ body {
 
 .red {
   background-color: rgb(243, 115, 115);
+}
+
+.center {
+  float: none;
+  }
+
+.navbar-center
+{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  height:100%;
 }
